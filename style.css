@@ -1,0 +1,663 @@
+/* Main Styles for Kuromi Claw Machine */
+:root {
+    --kuromi-primary: #E6D7FF;
+    --kuromi-secondary: #D4C2FF;
+    --kuromi-accent: #C2ADFF;
+    --kuromi-dark: #B199FF;
+    --kuromi-deep: #9F85FF;
+    --kuromi-black: #2D1B3D;
+    --kuromi-pink: #FFB6C1;
+    --kuromi-yellow: #FFD700;
+    --kuromi-white: #FFFFFF;
+    --kuromi-red: #FF69B4;
+    --shadow-soft: 0 8px 32px rgba(159, 133, 255, 0.3);
+    --shadow-hard: 0 4px 16px rgba(45, 27, 61, 0.4);
+    --gradient-main: linear-gradient(135deg, var(--kuromi-primary), var(--kuromi-accent));
+    --gradient-dark: linear-gradient(135deg, var(--kuromi-black), var(--kuromi-deep));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Fredoka', cursive;
+    background: var(--gradient-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Header Styles */
+.game-header {
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.game-title {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.title-main {
+    display: block;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--kuromi-black);
+    text-shadow: 3px 3px 0 var(--kuromi-white), 
+                 6px 6px 0 var(--kuromi-pink);
+    letter-spacing: 2px;
+}
+
+.title-sub {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--kuromi-deep);
+    text-shadow: 2px 2px 0 var(--kuromi-white);
+    margin-top: -5px;
+}
+
+.title-sparkle {
+    position: absolute;
+    top: -10px;
+    right: -20px;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, var(--kuromi-yellow), transparent);
+    border-radius: 50%;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+.header-decoration {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-decoration.left {
+    left: 20px;
+}
+
+.header-decoration.right {
+    right: 20px;
+}
+
+.kuromi-horn, .kuromi-bow, .kuromi-tail, .kuromi-skull {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.kuromi-horn {
+    background: var(--gradient-dark);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    border-radius: 0;
+}
+
+.kuromi-bow {
+    background: var(--kuromi-pink);
+    position: relative;
+}
+
+.kuromi-bow::before,
+.kuromi-bow::after {
+    content: '';
+    position: absolute;
+    background: var(--kuromi-pink);
+    border-radius: 50%;
+}
+
+.kuromi-bow::before {
+    width: 20px;
+    height: 30px;
+    left: -10px;
+    top: 5px;
+}
+
+.kuromi-bow::after {
+    width: 20px;
+    height: 30px;
+    right: -10px;
+    top: 5px;
+}
+
+/* Game Container */
+.game-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-areas: 
+        "scoreboard scoreboard"
+        "machine machine"
+        "controls controls"
+        "collection collection";
+    gap: 30px;
+    position: relative;
+    z-index: 5;
+}
+
+/* Scoreboard */
+.scoreboard {
+    grid-area: scoreboard;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.score-item {
+    background: var(--kuromi-white);
+    padding: 15px 25px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 3px solid var(--kuromi-accent);
+    transition: transform 0.3s ease;
+}
+
+.score-item:hover {
+    transform: translateY(-3px);
+}
+
+.score-item i {
+    font-size: 1.5rem;
+    color: var(--kuromi-deep);
+}
+
+.score-item .label {
+    font-weight: 600;
+    color: var(--kuromi-black);
+    font-size: 1.1rem;
+}
+
+.score-item .value {
+    font-weight: 700;
+    color: var(--kuromi-deep);
+    font-size: 1.3rem;
+    background: var(--gradient-main);
+    padding: 5px 15px;
+    border-radius: 15px;
+    min-width: 50px;
+    text-align: center;
+}
+
+/* Claw Machine */
+.claw-machine {
+    grid-area: machine;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.machine-body {
+    background: linear-gradient(135deg, var(--kuromi-white), var(--kuromi-primary));
+    border: 8px solid var(--kuromi-deep);
+    border-radius: 25px;
+    width: 600px;
+    height: 500px;
+    position: relative;
+    box-shadow: var(--shadow-hard);
+    overflow: hidden;
+}
+
+.glass-front {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 4px solid var(--kuromi-accent);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    z-index: 5;
+}
+
+.glass-reflection {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 40%;
+    height: 60%;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.6) 0%, 
+        rgba(255, 255, 255, 0.1) 50%, 
+        transparent 100%);
+    border-radius: 10px;
+}
+
+.coin-slot {
+    position: absolute;
+    top: 20px;
+    right: -40px;
+    width: 80px;
+    height: 60px;
+    background: var(--gradient-dark);
+    border-radius: 15px;
+    border: 4px solid var(--kuromi-yellow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.coin-slot:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--kuromi-yellow);
+}
+
+.slot-opening {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--kuromi-yellow);
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.slot-opening i {
+    font-size: 1.2rem;
+    margin-bottom: 2px;
+}
+
+.coin-animation {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--kuromi-yellow);
+    border-radius: 50%;
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+/* Claw Rail System */
+.claw-rail-system {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    right: 30px;
+    bottom: 110px;
+    z-index: 3;
+}
+
+.rail-horizontal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(90deg, var(--kuromi-black), var(--kuromi-deep));
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.rail-vertical {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 8px;
+    height: 60px;
+    background: linear-gradient(180deg, var(--kuromi-black), var(--kuromi-deep));
+    border-radius: 4px;
+    transform: translateX(-50%);
+    transition: left 0.5s ease;
+}
+
+/* Claw */
+.claw {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 80px;
+    transition: all 0.5s ease;
+    z-index: 4;
+}
+
+.claw-cable {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background: var(--kuromi-black);
+    transform: translateX(-50%);
+    transition: height 0.5s ease;
+}
+
+.claw-light {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    width: 12px;
+    height: 8px;
+    background: var(--kuromi-red);
+    border-radius: 4px;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px var(--kuromi-red);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.claw-arm {
+    position: absolute;
+    width: 4px;
+    height: 40px;
+    background: linear-gradient(180deg, var(--kuromi-black), var(--kuromi-deep));
+    border-radius: 2px;
+    transform-origin: top center;
+    transition: transform 0.3s ease;
+}
+
+.claw-arm.left {
+    top: 15px;
+    left: 18px;
+    transform: rotate(-20deg);
+}
+
+.claw-arm.center {
+    top: 15px;
+    left: 28px;
+    transform: rotate(0deg);
+}
+
+.claw-arm.right {
+    top: 15px;
+    right: 18px;
+    transform: rotate(20deg);
+}
+
+.claw.grabbing .claw-arm.left {
+    transform: rotate(-45deg);
+}
+
+.claw.grabbing .claw-arm.right {
+    transform: rotate(45deg);
+}
+
+/* Prize Area */
+.prize-area {
+    position: absolute;
+    top: 50px;
+    left: 40px;
+    right: 40px;
+    bottom: 120px;
+    z-index: 2;
+}
+
+/* Drop Zone */
+.drop-zone {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 60px;
+    background: var(--kuromi-black);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.drop-zone-opening {
+    width: 60px;
+    height: 8px;
+    background: var(--kuromi-deep);
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+.zone-label {
+    color: var(--kuromi-yellow);
+    font-size: 0.6rem;
+    font-weight: 600;
+}
+
+/* Machine Base */
+.machine-base {
+    width: 620px;
+    height: 80px;
+    background: var(--gradient-dark);
+    border-radius: 20px;
+    margin-top: -20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-hard);
+}
+
+.base-lights {
+    display: flex;
+    gap: 30px;
+}
+
+.base-lights .light {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--kuromi-yellow);
+    box-shadow: 0 0 15px var(--kuromi-yellow);
+    animation: blink 1.5s ease-in-out infinite;
+}
+
+.base-lights .light:nth-child(2) {
+    animation-delay: 0.3s;
+    background: var(--kuromi-pink);
+    box-shadow: 0 0 15px var(--kuromi-pink);
+}
+
+.base-lights .light:nth-child(3) {
+    animation-delay: 0.6s;
+    background: var(--kuromi-accent);
+    box-shadow: 0 0 15px var(--kuromi-accent);
+}
+
+.base-lights .light:nth-child(4) {
+    animation-delay: 0.9s;
+    background: var(--kuromi-red);
+    box-shadow: 0 0 15px var(--kuromi-red);
+}
+
+/* Controls Panel */
+.controls-panel {
+    grid-area: controls;
+    background: var(--kuromi-white);
+    border: 4px solid var(--kuromi-deep);
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: var(--shadow-soft);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.controls-title {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--kuromi-black);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.controls-title i {
+    color: var(--kuromi-deep);
+    font-size: 1.5rem;
+}
+
+.controls-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.control-btn {
+    background: var(--gradient-main);
+    border: 3px solid var(--kuromi-deep);
+    border-radius: 15px;
+    padding: 15px;
+    font-family: inherit;
+    font-weight: 600;
+    color: var(--kuromi-black);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    min-height: 80px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.control-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    background: var(--kuromi-accent);
+}
+
+.control-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.control-btn.special {
+    background: var(--gradient-dark);
+    color: var(--kuromi-yellow);
+    border-color: var(--kuromi-yellow);
+}
+
+.control-btn.special:hover {
+    background: var(--kuromi-black);
+    box-shadow: 0 0 15px var(--kuromi-yellow);
+}
+
+.control-btn i {
+    font-size: 1.5rem;
+}
+
+.control-btn span {
+    font-size: 0.9rem;
+}
+
+.control-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.control-spacer {
+    /* Empty grid cell for spacing */
+}
+
+/* Prize Collection */
+.prize-collection {
+    grid-area: collection;
+    background: var(--kuromi-white);
+    border: 4px solid var(--kuromi-accent);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: var(--shadow-soft);
+}
+
+.collection-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: var(--kuromi-black);
+    font-size: 1.2rem;
+}
+
+.collection-header i {
+    color: var(--kuromi-deep);
+    font-size: 1.3rem;
+}
+
+.collection-count {
+    margin-left: auto;
+    background: var(--gradient-main);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+}
+
+.collection-box {
+    min-height: 120px;
+    background: var(--kuromi-primary);
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-start;
+    overflow-y: auto;
+    max-height: 200px;
+}
+
+.empty-state {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--kuromi-deep);
+    font-style: italic;
+    padding: 30px;
+}
+
+.empty-state i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    opacity: 0.7;
+}
+
+/* Status Messages */
+.status-messages {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    pointer-events: none;
+}
+
+/* Animations */
+@keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1) rotate(180deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes blink {
+    0%, 80%, 100% { opacity: 1; }
+    40% { opacity: 0.3; }
+}

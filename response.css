@@ -1,0 +1,619 @@
+/* Responsive Design for Kuromi Claw Machine */
+
+/* Large Desktop (1400px and up) */
+@media (min-width: 1400px) {
+    .game-container {
+        grid-template-areas: 
+            "scoreboard scoreboard scoreboard"
+            "controls machine collection"
+            "controls machine collection";
+        grid-template-columns: 300px 1fr 300px;
+        max-width: 1600px;
+    }
+    
+    .controls-panel {
+        margin: 0;
+    }
+    
+    .machine-body {
+        width: 700px;
+        height: 600px;
+    }
+    
+    .machine-base {
+        width: 720px;
+    }
+}
+
+/* Desktop (1024px - 1399px) */
+@media (max-width: 1399px) {
+    .game-container {
+        max-width: 1200px;
+    }
+    
+    .machine-body {
+        width: 550px;
+        height: 450px;
+    }
+    
+    .machine-base {
+        width: 570px;
+    }
+    
+    .title-main {
+        font-size: 2.5rem;
+    }
+    
+    .title-sub {
+        font-size: 1.5rem;
+    }
+}
+
+/* Tablet Landscape (768px - 1023px) */
+@media (max-width: 1023px) {
+    .game-container {
+        grid-template-areas: 
+            "scoreboard"
+            "machine"
+            "controls"
+            "collection";
+        grid-template-columns: 1fr;
+        gap: 25px;
+        max-width: 800px;
+    }
+    
+    .machine-body {
+        width: 500px;
+        height: 400px;
+    }
+    
+    .machine-base {
+        width: 520px;
+    }
+    
+    .scoreboard {
+        gap: 20px;
+    }
+    
+    .score-item {
+        padding: 12px 20px;
+    }
+    
+    .controls-grid {
+        max-width: 350px;
+    }
+    
+    .control-btn {
+        padding: 12px;
+        min-height: 70px;
+    }
+    
+    .control-btn i {
+        font-size: 1.3rem;
+    }
+    
+    .control-btn span {
+        font-size: 0.8rem;
+    }
+    
+    .header-decoration {
+        display: none;
+    }
+}
+
+/* Tablet Portrait (600px - 767px) */
+@media (max-width: 767px) {
+    .game-header {
+        padding: 15px;
+    }
+    
+    .title-main {
+        font-size: 2rem;
+    }
+    
+    .title-sub {
+        font-size: 1.2rem;
+    }
+    
+    .machine-body {
+        width: 450px;
+        height: 350px;
+    }
+    
+    .machine-base {
+        width: 470px;
+        height: 70px;
+    }
+    
+    .scoreboard {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .score-item {
+        flex: 1;
+        min-width: 120px;
+        padding: 10px 15px;
+    }
+    
+    .score-item i {
+        font-size: 1.3rem;
+    }
+    
+    .score-item .label {
+        font-size: 1rem;
+    }
+    
+    .score-item .value {
+        font-size: 1.1rem;
+        padding: 3px 10px;
+    }
+    
+    .controls-panel {
+        padding: 20px;
+    }
+    
+    .controls-grid {
+        max-width: 300px;
+        gap: 12px;
+    }
+    
+    .control-btn {
+        padding: 10px;
+        min-height: 60px;
+    }
+    
+    .control-btn i {
+        font-size: 1.1rem;
+    }
+    
+    .control-btn span {
+        font-size: 0.7rem;
+    }
+    
+    .collection-box {
+        min-height: 100px;
+        max-height: 150px;
+    }
+    
+    .collected-prize {
+        width: 40px;
+        height: 40px;
+        margin: 3px;
+    }
+}
+
+/* Mobile Landscape (480px - 599px) */
+@media (max-width: 599px) {
+    .game-container {
+        padding: 0 15px;
+        gap: 20px;
+    }
+    
+    .machine-body {
+        width: 380px;
+        height: 300px;
+    }
+    
+    .machine-base {
+        width: 400px;
+        height: 60px;
+    }
+    
+    .base-lights .light {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .coin-slot {
+        width: 70px;
+        height: 50px;
+        right: -35px;
+    }
+    
+    .slot-opening {
+        font-size: 0.6rem;
+    }
+    
+    .slot-opening i {
+        font-size: 1rem;
+    }
+    
+    .claw {
+        width: 50px;
+        height: 70px;
+    }
+    
+    .claw-arm {
+        width: 3px;
+        height: 35px;
+    }
+    
+    .prize-item {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .prize-item.kuromi-plush::before {
+        font-size: 18px;
+    }
+    
+    .prize-item.yellow-coin::before {
+        font-size: 14px;
+    }
+    
+    .prize-item.point-token::before {
+        font-size: 12px;
+    }
+    
+    .controls-title {
+        font-size: 1.1rem;
+    }
+    
+    .controls-title i {
+        font-size: 1.3rem;
+    }
+}
+
+/* Mobile Portrait (320px - 479px) */
+@media (max-width: 479px) {
+    .game-container {
+        padding: 0 10px;
+        gap: 15px;
+    }
+    
+    .title-main {
+        font-size: 1.8rem;
+    }
+    
+    .title-sub {
+        font-size: 1rem;
+    }
+    
+    .machine-body {
+        width: 320px;
+        height: 260px;
+    }
+    
+    .machine-base {
+        width: 340px;
+        height: 50px;
+    }
+    
+    .base-lights {
+        gap: 20px;
+    }
+    
+    .base-lights .light {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .scoreboard {
+        gap: 10px;
+    }
+    
+    .score-item {
+        padding: 8px 12px;
+        gap: 8px;
+    }
+    
+    .score-item i {
+        font-size: 1.1rem;
+    }
+    
+    .score-item .label {
+        font-size: 0.9rem;
+    }
+    
+    .score-item .value {
+        font-size: 1rem;
+        padding: 2px 8px;
+        min-width: 40px;
+    }
+    
+    .controls-panel {
+        padding: 15px;
+    }
+    
+    .controls-title {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+    
+    .controls-grid {
+        max-width: 280px;
+        gap: 10px;
+    }
+    
+    .control-btn {
+        padding: 8px;
+        min-height: 55px;
+        border-radius: 12px;
+    }
+    
+    .control-btn i {
+        font-size: 1rem;
+    }
+    
+    .control-btn span {
+        font-size: 0.6rem;
+    }
+    
+    .claw {
+        width: 45px;
+        height: 60px;
+    }
+    
+    .claw-arm {
+        width: 2px;
+        height: 30px;
+    }
+    
+    .claw-light {
+        width: 10px;
+        height: 6px;
+    }
+    
+    .coin-slot {
+        width: 60px;
+        height: 45px;
+        right: -30px;
+    }
+    
+    .slot-opening {
+        font-size: 0.5rem;
+    }
+    
+    .slot-opening i {
+        font-size: 0.9rem;
+    }
+    
+    .prize-item {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .prize-item.kuromi-plush::before {
+        font-size: 16px;
+    }
+    
+    .prize-item.yellow-coin::before {
+        font-size: 12px;
+    }
+    
+    .prize-item.point-token::before {
+        font-size: 10px;
+    }
+    
+    .drop-zone {
+        width: 80px;
+        height: 50px;
+    }
+    
+    .drop-zone-opening {
+        width: 50px;
+        height: 6px;
+    }
+    
+    .zone-label {
+        font-size: 0.5rem;
+    }
+    
+    .collection-header {
+        font-size: 1rem;
+    }
+    
+    .collection-header i {
+        font-size: 1.1rem;
+    }
+    
+    .collection-count {
+        font-size: 0.8rem;
+        padding: 3px 8px;
+    }
+    
+    .collection-box {
+        padding: 10px;
+        min-height: 80px;
+        max-height: 120px;
+    }
+    
+    .collected-prize {
+        width: 35px;
+        height: 35px;
+        margin: 2px;
+    }
+    
+    .empty-state {
+        padding: 20px;
+    }
+    
+    .empty-state i {
+        font-size: 1.5rem;
+    }
+    
+    .empty-state p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Extra Small Mobile (below 320px) */
+@media (max-width: 319px) {
+    .machine-body {
+        width: 280px;
+        height: 220px;
+    }
+    
+    .machine-base {
+        width: 300px;
+    }
+    
+    .controls-grid {
+        max-width: 250px;
+        gap: 8px;
+    }
+    
+    .control-btn {
+        padding: 6px;
+        min-height: 50px;
+    }
+    
+    .control-btn i {
+        font-size: 0.9rem;
+    }
+    
+    .control-btn span {
+        font-size: 0.5rem;
+    }
+    
+    .prize-item {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .collected-prize {
+        width: 30px;
+        height: 30px;
+        margin: 1px;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .control-btn {
+        min-height: 60px;
+        touch-action: manipulation;
+    }
+    
+    .coin-slot {
+        min-width: 80px;
+        min-height: 60px;
+    }
+    
+    .prize-item {
+        min-width: 40px;
+        min-height: 40px;
+    }
+    
+    /* Increase touch targets for mobile */
+    .control-btn:hover {
+        transform: none;
+    }
+    
+    .control-btn:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease;
+    }
+}
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-height: 600px) {
+    .game-header {
+        padding: 10px;
+    }
+    
+    .title-main {
+        font-size: 1.5rem;
+    }
+    
+    .title-sub {
+        font-size: 0.9rem;
+    }
+    
+    .game-container {
+        gap: 15px;
+        grid-template-areas: 
+            "scoreboard scoreboard"
+            "machine controls"
+            "collection collection";
+        grid-template-columns: 1fr 300px;
+    }
+    
+    .machine-body {
+        width: 400px;
+        height: 280px;
+    }
+    
+    .machine-base {
+        width: 420px;
+        height: 50px;
+    }
+    
+    .controls-panel {
+        margin: 0;
+        height: fit-content;
+    }
+    
+    .controls-grid {
+        max-width: 250px;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .prize-item.kuromi-plush::before,
+    .prize-item.yellow-coin::before,
+    .prize-item.point-token::before {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .glass-reflection {
+        backdrop-filter: blur(5px);
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .floating-hearts::before,
+    .floating-hearts::after,
+    .sparkle,
+    .devil-particle {
+        animation: none;
+    }
+    
+    .base-lights .light {
+        animation: none;
+        opacity: 1;
+    }
+    
+    .claw-light {
+        animation: none;
+        opacity: 1;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .glass-front {
+        background: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(5px);
+    }
+    
+    .machine-body {
+        background: linear-gradient(135deg, #f8f9fa, var(--kuromi-primary));
+    }
+    
+    .score-item {
+        background: rgba(255, 255, 255, 0.95);
+    }
+    
+    .controls-panel {
+        background: rgba(255, 255, 255, 0.95);
+    }
+    
+    .prize-collection {
+        background: rgba(255, 255, 255, 0.95);
+    }
+}
