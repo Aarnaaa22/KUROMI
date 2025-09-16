@@ -29,6 +29,12 @@ class PrizeGenerator {
                 size: { width: 30, height: 30 },
                 rarity: 'common',
                 stackable: true
+            },
+            purpleBall: {
+                count: 10,
+                size: { width: 32, height: 32 },
+                rarity: 'common',
+                stackable: true
             }
         };
         
@@ -172,6 +178,13 @@ class PrizeGenerator {
                 <ellipse cx="36" cy="10" rx="6" ry="10" fill="#2D1B3D"/>
                 <ellipse cx="24" cy="8" rx="4" ry="3" fill="#FFB6C1"/>
                 <ellipse cx="24" cy="8" rx="2" ry="1.5" fill="#FFF"/>
+            </svg>`;
+        }
+        // Add purple ball SVG for purpleBall type
+        if (prize.type === 'purpleBall') {
+            element.innerHTML = `<svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="16" r="14" fill="#9F85FF" stroke="#2D1B3D" stroke-width="2"/>
+                <ellipse cx="16" cy="12" rx="7" ry="3" fill="#FFF" opacity="0.3"/>
             </svg>`;
         }
 
