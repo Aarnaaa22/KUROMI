@@ -176,7 +176,7 @@ class PrizeGenerator {
     }
     
     // Setup prize interactions
-    setupInteractions() {
+        setupInteractions() {
         if (!this.prizeArea) return;
         // Add hover effects for prizes
         this.prizeArea.addEventListener('mouseenter', (e) => {
@@ -193,7 +193,8 @@ class PrizeGenerator {
         }, true);
     }
 
-    // ...existing code...
+
+    
     getPrizeAtPosition(x, y, tolerance = 15) {
         return this.prizes.find(prize => {
             if (prize.collected || prize.grabbed) return false;
@@ -206,14 +207,3 @@ class PrizeGenerator {
     }
 }
     
-    // Get prize at specific coordinates (for claw grabbing)
-    getPrizeAtPosition(x, y, tolerance = 15) {
-        return this.prizes.find(prize => {
-            if (prize.collected || prize.grabbed) return false;
-            const distance = Math.sqrt(
-                Math.pow(prize.position.x - x, 2) +
-                Math.pow(prize.position.y - y, 2)
-            );
-            return distance <= tolerance;
-        });
-    }
