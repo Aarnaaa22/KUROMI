@@ -147,31 +147,47 @@ class PrizeGenerator {
         const element = document.createElement('div');
         element.className = `prize-item ${prize.type} ${prize.rarity === 'rare' ? 'rare' : ''}`;
         element.id = `prize-${prize.id}`;
-        
+
         // Position the element
         element.style.left = prize.position.x + '%';
         element.style.top = prize.position.y + '%';
         element.style.width = prize.size.width + 'px';
         element.style.height = prize.size.height + 'px';
         element.style.zIndex = Math.floor(10 + prize.depth);
-        
+
         // Add floating animation with unique timing
         element.style.animationDelay = (prize.wobble / 360 * 3) + 's';
         element.classList.add('animate-float');
-        
+
+        // Add Kuromi plushie SVG for kuromiPlush type
+        if (prize.type === 'kuromiPlush') {
+            element.innerHTML = `<svg viewBox="0 0 48 48" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="24" cy="32" rx="14" ry="12" fill="#E6D7FF" stroke="#2D1B3D" stroke-width="2"/>
+                <ellipse cx="24" cy="22" rx="10" ry="8" fill="#2D1B3D" stroke="#2D1B3D" stroke-width="2"/>
+                <ellipse cx="18" cy="20" rx="3" ry="4" fill="#2D1B3D"/>
+                <ellipse cx="30" cy="20" rx="3" ry="4" fill="#2D1B3D"/>
+                <ellipse cx="24" cy="28" rx="5" ry="3" fill="#FFB6C1"/>
+                <circle cx="24" cy="22" r="2" fill="#FFF"/>
+                <ellipse cx="12" cy="10" rx="6" ry="10" fill="#2D1B3D"/>
+                <ellipse cx="36" cy="10" rx="6" ry="10" fill="#2D1B3D"/>
+                <ellipse cx="24" cy="8" rx="4" ry="3" fill="#FFB6C1"/>
+                <ellipse cx="24" cy="8" rx="2" ry="1.5" fill="#FFF"/>
+            </svg>`;
+        }
+
         // Add special effects for rare items
         if (prize.rarity === 'rare') {
             element.classList.add('animate-glow');
         }
-        
+
         // Add magnetic effect for coins
         if (prize.type === 'yellowCoin' && Math.random() < 0.3) {
             element.classList.add('animate-magnetic');
         }
-        
+
         // Store reference to prize data
         element.prizeData = prize;
-        
+
         return element;
     }
     
